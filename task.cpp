@@ -35,10 +35,14 @@ int main() {
             ++v[str[i]];
         }
     }
-    
+
     for (int i = 0; i < 128; ++i) {
         if (v[i] != 0) {
-            cout << static_cast<char>(i) << " - " << v[i] << '\n';
+            cout << static_cast<char>(i) << ": ";
+            for (int j = 0; j < v[i]; ++j) {
+                cout << '*';
+            }
+            cout << '\n';
         }
     }
     
