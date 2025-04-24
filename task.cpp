@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 
@@ -18,7 +19,7 @@ int main() {
     }
 
     string str;
-    vector<int> v(128, 0);
+    vector<int> v(256, 0);
     cin >> str;
     for (int i = 0; i < str.size(); ++i) {
         if (!(48 <= str[i] && str[i] <= 57 || 65 <= str[i] && str[i] <= 90 || 97 <= str[i] && str[i] <= 122)) {
@@ -35,15 +36,15 @@ int main() {
             ++v[str[i]];
         }
     }
-
-    for (int i = 0; i < 128; ++i) {
+    ofstream file("file_stage_5.txt");
+    for (int i = 0; i < 256; ++i) {
         if (v[i] != 0) {
-            cout << static_cast<char>(i) << ": ";
+            file << static_cast<char>(i) << ": ";
             for (int j = 0; j < v[i]; ++j) {
-                cout << '*';
+                file << '*';
             }
-            cout << '\n';
+            file << '\n';
         }
     }
-    
+    file.close();    
 }
