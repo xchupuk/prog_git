@@ -5,15 +5,29 @@
 using namespace std;
 
 int main() {
-    string s;
+    cout << "Should the case be taken into account? Enter Y/N";
+    string case_check;
+    cin >> case_check;
+    
+    bool flag;
+    if (case_check == "Y") flag = 1;
+    else flag = 0;
+
+    string str;
     vector<int> v(128, 0);
-    cin >> s;
-    for (int i = 0; i < s.size(); ++i) {
-        ++v[s[i]];
+    cin >> str;
+    for (int i = 0; i < str.size(); ++i) {
+        if (str[i] > 95 && flag == 0) {
+            ++v[str[i] - 32];
+        }
+        else {
+            ++v[str[i]];
+        }
     }
     for (int i = 0; i < 128; ++i) {
         if (v[i] != 0) {
             cout << static_cast<char>(i) << " - " << v[i] << '\n';
         }
     }
+    
 }
